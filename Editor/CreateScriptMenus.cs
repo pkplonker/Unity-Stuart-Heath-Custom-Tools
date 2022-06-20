@@ -24,9 +24,11 @@ namespace StuartHeathToolsEditor
 		{
 			var pathToNewFile = EditorUtility.SaveFilePanel("Create MonoBehaviour Script", GetCurrentPath(false),
 				"NewMonoBehaviour.cs", "cs");
-			var pathToTemplate = UtilityEditor.GetFolderPathFromFile(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(typeof(CreateScriptMenus)))) + monobehaviourTemplateTxt;
+			var pathToTemplate = UtilityEditor.GetFolderPathFromFile(typeof(CreateScriptMenus)) +
+			                     monobehaviourTemplateTxt;
 			GenerateScriptFromTemplate(pathToNewFile, pathToTemplate);
 		}
+
 
 		[MenuItem("Assets/Stuart/Create Editor Script", false, 1)]
 		[MenuItem("Stuart/Create Editor Script", false, 1)]
@@ -34,7 +36,7 @@ namespace StuartHeathToolsEditor
 		{
 			var pathToNewFile =
 				EditorUtility.SaveFilePanel("Create Editor Script", GetCurrentPath(true), "NewEditor.cs", "cs");
-			var pathToTemplate = UtilityEditor.GetFolderPathFromFile(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(typeof(CreateScriptMenus)))) + editorTemplateTxt;
+			var pathToTemplate = UtilityEditor.GetFolderPathFromFile(typeof(CreateScriptMenus)) + editorTemplateTxt;
 			GenerateScriptFromTemplate(pathToNewFile, pathToTemplate);
 		}
 
@@ -62,33 +64,7 @@ namespace StuartHeathToolsEditor
 			if (Selection.assetGUIDs.Length == 0) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
 			var path = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);
 			if (path.Contains("Packages/")) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
-			return !path.Contains(".") ? path : UtilityEditor.GetFolderPathFromFile(path);
-		}
-
-
-		private static string GetMonoScriptPathFor(Type type)
-		{
-			var asset = "";
-			var guids = AssetDatabase.FindAssets(string.Format("{0} t:script", type.Name));
-			if (guids.Length > 1)
-			{
-				foreach (var guid in guids)
-				{
-					var assetPath = AssetDatabase.GUIDToAssetPath(guid);
-					var filename = Path.GetFileNameWithoutExtension(assetPath);
-					if (filename != type.Name) continue;
-					asset = guid;
-					break;
-				}
-			}
-			else if (guids.Length == 1) asset = guids[0];
-			else
-			{
-				Debug.LogErrorFormat("Unable to locate {0}", type.Name);
-				return null;
-			}
-
-			return asset;
+			return !path.Contains(".") ? path : UtilityEditor.GetFolderPathFromFilePath(path);
 		}
 	}
 }
