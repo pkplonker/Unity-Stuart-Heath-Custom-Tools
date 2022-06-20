@@ -1,3 +1,7 @@
+//
+// Copyright (C) 2022 Stuart Heath. All rights reserved.
+//
+
 using System;
 using System.IO;
 using UnityEditor;
@@ -5,10 +9,13 @@ using UnityEngine;
 
 namespace Editor
 {
+	/// <summary>
+	///CreateScriptMenus - Used to create the script menus with custom templates. Alternative templates can be used by setting the template path and stored in the same folder.
+	/// </summary>
 	public class CreateScriptMenus
 	{
-		private static string monobehaviourtemplateTxt = "/MonoBehaviourTemplate.txt";
-		private static string editorTemplateTxt = "/EditorTemplate.txt";
+		private static readonly string monobehaviourTemplateTxt = "/MonoBehaviourTemplate.txt";
+		private static readonly string editorTemplateTxt = "/EditorTemplate.txt";
 
 
 		[MenuItem("Assets/Stuart/Create MonoBehaviour Script", false, 0)]
@@ -17,7 +24,7 @@ namespace Editor
 		{
 			var pathToNewFile = EditorUtility.SaveFilePanel("Create MonoBehaviour Script", GetCurrentPath(false),
 				"NewMonoBehaviour.cs", "cs");
-			var pathToTemplate = GetMonoScriptPathFor(typeof(CreateScriptMenus)) + monobehaviourtemplateTxt;
+			var pathToTemplate = GetMonoScriptPathFor(typeof(CreateScriptMenus)) + monobehaviourTemplateTxt;
 			GenerateScriptFromTemplate(pathToNewFile, pathToTemplate);
 		}
 
@@ -54,10 +61,7 @@ namespace Editor
 		{
 			if (Selection.assetGUIDs.Length == 0) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
 			var path = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);
-			if (path.Contains("Packages/"))
-			{
-				return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
-			}
+			if (path.Contains("Packages/")) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
 			return !path.Contains(".") ? path : GetFolderPathFromFile(path);
 		}
 
@@ -66,11 +70,6 @@ namespace Editor
 			var index = path.LastIndexOf("/");
 			path = path.Substring(0, index);
 			return path;
-		}
-
-		public static void Test()
-		{
-			Debug.Log("Testing");
 		}
 
 		private static string GetMonoScriptPathFor(Type type)
