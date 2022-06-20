@@ -7,7 +7,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace StuartHeathToolsEditor
 {
 	/// <summary>
 	///CreateScriptMenus - Used to create the script menus with custom templates. Alternative templates can be used by setting the template path and stored in the same folder.
@@ -24,7 +24,7 @@ namespace Editor
 		{
 			var pathToNewFile = EditorUtility.SaveFilePanel("Create MonoBehaviour Script", GetCurrentPath(false),
 				"NewMonoBehaviour.cs", "cs");
-			var pathToTemplate = GetMonoScriptPathFor(typeof(CreateScriptMenus)) + monobehaviourTemplateTxt;
+			var pathToTemplate = UtilityEditor.GetFolderPathFromFile(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(typeof(CreateScriptMenus)))) + monobehaviourTemplateTxt;
 			GenerateScriptFromTemplate(pathToNewFile, pathToTemplate);
 		}
 
@@ -34,7 +34,7 @@ namespace Editor
 		{
 			var pathToNewFile =
 				EditorUtility.SaveFilePanel("Create Editor Script", GetCurrentPath(true), "NewEditor.cs", "cs");
-			var pathToTemplate = GetMonoScriptPathFor(typeof(CreateScriptMenus)) + editorTemplateTxt;
+			var pathToTemplate = UtilityEditor.GetFolderPathFromFile(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(typeof(CreateScriptMenus)))) + editorTemplateTxt;
 			GenerateScriptFromTemplate(pathToNewFile, pathToTemplate);
 		}
 
@@ -62,15 +62,9 @@ namespace Editor
 			if (Selection.assetGUIDs.Length == 0) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
 			var path = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);
 			if (path.Contains("Packages/")) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
-			return !path.Contains(".") ? path : GetFolderPathFromFile(path);
+			return !path.Contains(".") ? path : UtilityEditor.GetFolderPathFromFile(path);
 		}
 
-		private static string GetFolderPathFromFile(string path)
-		{
-			var index = path.LastIndexOf("/");
-			path = path.Substring(0, index);
-			return path;
-		}
 
 		private static string GetMonoScriptPathFor(Type type)
 		{
@@ -94,7 +88,7 @@ namespace Editor
 				return null;
 			}
 
-			return GetFolderPathFromFile(AssetDatabase.GUIDToAssetPath(asset));
+			return asset;
 		}
 	}
 }
