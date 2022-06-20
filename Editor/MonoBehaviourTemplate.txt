@@ -1,0 +1,18 @@
+ //
+ // Copyright (C) #YEAR# Stuart Heath. All rights reserved.
+ //
+using UnityEngine;
+
+    /// <summary>
+    ///#SCRIPTNAME# full description
+    /// </summary>
+    
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    private void Start()
+    {
+    }
+    private void Update()
+    {
+    }
+}

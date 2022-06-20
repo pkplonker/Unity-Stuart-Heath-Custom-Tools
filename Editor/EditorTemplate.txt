@@ -1,0 +1,17 @@
+ //
+ // Copyright (C) #YEAR# Stuart Heath. All rights reserved.
+ //
+using UnityEngine;
+using UnityEditor;
+
+    /// <summary>
+    ///#SCRIPTNAME# full description
+    /// </summary>
+    [CustomEditor(typeof(#SCRIPTNAMEWITHOUTEDITOR#))]
+public class #SCRIPTNAME# : Editor
+{
+   public override void OnInspectorGUI()
+   {
+      base.OnInspectorGUI();
+   }
+}
