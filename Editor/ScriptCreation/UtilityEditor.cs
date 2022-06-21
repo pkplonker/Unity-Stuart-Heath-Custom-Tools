@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace StuartHeathToolsEditor
+namespace Editor.ScriptCreation
 {
 	/// <summary>
 	/// Utility class for custom editor scripts.
@@ -21,9 +21,11 @@ namespace StuartHeathToolsEditor
 		{
 			if (string.IsNullOrWhiteSpace(path)) return "";
 			var index = path.LastIndexOf("/");
+			if (index == -1) return "";
 			path = path.Substring(0, index);
 			return path;
 		}
+
 		public static string GetMonoScriptPathFor(Type type)
 		{
 			var asset = "";
@@ -49,7 +51,7 @@ namespace StuartHeathToolsEditor
 			return asset;
 		}
 
-		public static string GetFolderPathFromFile(Type t)=> GetFolderPathFromFilePath(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(t)));
-
+		public static string GetFolderPathFromFile(Type t) =>
+			GetFolderPathFromFilePath(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(t)));
 	}
 }

@@ -4,6 +4,7 @@
 
 using System;
 using System.IO;
+using Editor.ScriptCreation;
 using UnityEditor;
 using UnityEngine;
 
@@ -51,7 +52,7 @@ namespace StuartHeathToolsEditor
 			AssetDatabase.Refresh();
 		}
 
-		private static string ReplaceValues(string data, string scriptName)
+		public static string ReplaceValues(string data, string scriptName)
 		{
 			data = data.Replace("#SCRIPTNAME#", scriptName);
 			data = data.Replace("#YEAR#", DateTime.Now.Year.ToString());
