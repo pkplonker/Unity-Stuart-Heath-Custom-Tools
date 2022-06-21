@@ -15,15 +15,12 @@ public class UtilityEditorTests
 		Assert.AreEqual("/A/B", UtilityEditor.GetFolderPathFromFilePath("/A/B/C"));
 		Assert.AreEqual("/A/B/C", UtilityEditor.GetFolderPathFromFilePath("/A/B/C/"));
 	}
-
 	[Test]
 	public void GetFolderPathFromFile() => Assert.AreEqual(
-		"Packages/com.stuartheath.stuartheathtools/Tests/Packages_com.stuartheath.stuartheathtools_Tests_Tests",
+		"Packages/com.stuartheath.stuartheathtools/Tests/Editor",
 		UtilityEditor.GetFolderPathFromFile(typeof(UtilityEditorTests)));
-
-
 	[Test]
 	public void GetMonoScriptPathFor() => Assert.AreEqual(
-		"Packages/com.stuartheath.stuartheathtools/Tests/Packages_com.stuartheath.stuartheathtools_Tests_Tests/UtilityEditorTests.cs",
+		"Packages/com.stuartheath.stuartheathtools/Tests/Editor/UtilityEditorTests.cs",
 		AssetDatabase.GUIDToAssetPath(UtilityEditor.GetMonoScriptPathFor(typeof(UtilityEditorTests))));
 }

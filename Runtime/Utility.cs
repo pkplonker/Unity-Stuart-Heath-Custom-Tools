@@ -20,41 +20,21 @@ namespace StuartHeathTools
 		public static string WithColor(this string text, Color color) =>
 			"<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
 
-		#region FormatMoneyToKMB
-
-		public static string FormatMoneyToKMB(ulong amount)
+		
+		public static string FormatMoneyToKMB<T>(T amount)
 		{
-			if (amount >= 1000000000) return $"{amount / 1000000000}B";
-			if (amount >= 1000000) return $"{amount / 1000000}M";
-			if (amount >= 1000) return $"{amount / 1000}K";
-			return amount.ToString();
-		}
+			if (!amount.IsNumericType()) return amount.ToString();
+			dynamic x = amount;
+			if (x >= 1000000000000) return $"{x / 1000000000000}T";
+			if (x >= 1000000000) return $"{x / 1000000000}B";
+			if (x >= 1000000) return $"{x / 1000000}M";
+			if (x >= 1000) return $"{x / 1000}K";
 
-		public static string FormatMoneyToKMB(long amount)
-		{
-			if (amount >= 1000000000) return $"{amount / 1000000000}B";
-			if (amount >= 1000000) return $"{amount / 1000000}M";
-			if (amount >= 1000) return $"{amount / 1000}K";
-			return amount.ToString();
+			if (x <= -1000000000000) return $"{x / 1000000000000}T";
+			if (x <= -1000000000) return $"{x / 1000000000}B";
+			if (x <= -1000000) return $"{x / 1000000}M";
+			return x <= -1000 ? $"{x / 1000}K" : (string) x.ToString();
 		}
-
-		public static string FormatMoneyToKMB(float amount)
-		{
-			if (amount >= 1000000000) return $"{amount / 1000000000}B";
-			if (amount >= 1000000) return $"{amount / 1000000}M";
-			if (amount >= 1000) return $"{amount / 1000}K";
-			return amount.ToString();
-		}
-
-		public static string FormatMoneyToKMB(double amount)
-		{
-			if (amount >= 1000000000) return $"{amount / 1000000000}B";
-			if (amount >= 1000000) return $"{amount / 1000000}M";
-			if (amount >= 1000) return $"{amount / 1000}K";
-			return amount.ToString();
-		}
-
-		#endregion
 
 		public static bool IsNumericType(this object o)
 		{

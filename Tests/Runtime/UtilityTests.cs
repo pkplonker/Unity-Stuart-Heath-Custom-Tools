@@ -1,0 +1,107 @@
+using System;
+using NUnit.Framework;
+using StuartHeathTools;
+using UnityEngine;
+
+public class UtilityTests
+{
+	#region FormatMoneyToKMB
+
+	[Test]
+	public void FormatMoneyToKMBSub1000()
+	{
+		Assert.AreEqual("576", Utility.FormatMoneyToKMB(576));
+		Assert.AreEqual("576", Utility.FormatMoneyToKMB(576f));
+		Assert.AreEqual("576", Utility.FormatMoneyToKMB(576L));
+		Assert.AreEqual("-256", Utility.FormatMoneyToKMB(-256));
+		Assert.AreEqual("-256", Utility.FormatMoneyToKMB(-256f));
+		Assert.AreEqual("-256", Utility.FormatMoneyToKMB(-256L));
+	}
+
+	[Test]
+	public void FormatMoneyToKMBk()
+	{
+		Assert.AreEqual("5K", Utility.FormatMoneyToKMB(5760));
+		Assert.AreEqual("5.76K", Utility.FormatMoneyToKMB(5760f));
+		Assert.AreEqual("5K", Utility.FormatMoneyToKMB(5760L));
+		Assert.AreEqual("-2K", Utility.FormatMoneyToKMB(-2560));
+		Assert.AreEqual("-2.56K", Utility.FormatMoneyToKMB(-2560f));
+		Assert.AreEqual("-2K", Utility.FormatMoneyToKMB(-2560L));
+	}
+
+	[Test]
+	public void FormatMoneyToKMBm()
+
+	{
+		Assert.AreEqual("5M", Utility.FormatMoneyToKMB(5760000));
+		Assert.AreEqual("5.76M", Utility.FormatMoneyToKMB(5760000f));
+		Assert.AreEqual("5M", Utility.FormatMoneyToKMB(5760000L));
+		Assert.AreEqual("-2M", Utility.FormatMoneyToKMB(-2560000));
+		Assert.AreEqual("-2.56M", Utility.FormatMoneyToKMB(-2560000f));
+		Assert.AreEqual("-2M", Utility.FormatMoneyToKMB(-2560000L));
+	}
+
+	[Test]
+	public void FormatMoneyToKMBb()
+	{
+		Assert.AreEqual("5B", Utility.FormatMoneyToKMB(5760000000));
+		Assert.AreEqual("5.76B", Utility.FormatMoneyToKMB(5760000000f));
+		Assert.AreEqual("5B", Utility.FormatMoneyToKMB(5760000000L));
+		Assert.AreEqual("-2B", Utility.FormatMoneyToKMB(-2560000000));
+		Assert.AreEqual("-2.56B", Utility.FormatMoneyToKMB(-2560000000f));
+		Assert.AreEqual("-2B", Utility.FormatMoneyToKMB(-2560000000L));
+	}
+
+	[Test]
+	public void FormatMoneyToKMBMax()
+	{
+		Assert.AreEqual("18446744T", Utility.FormatMoneyToKMB(ulong.MaxValue));
+		Assert.AreEqual("9223372T", Utility.FormatMoneyToKMB(long.MaxValue));
+		Assert.AreEqual("3.402824E+26T", Utility.FormatMoneyToKMB(float.MaxValue));
+		Assert.AreEqual("2B", Utility.FormatMoneyToKMB(int.MaxValue));
+		Assert.AreEqual("1.79769313486232E+296T", Utility.FormatMoneyToKMB(double.MaxValue));
+	}
+
+	[Test]
+	public void FormatMoneyToKMBError()
+	{
+		Assert.AreEqual("asd", Utility.FormatMoneyToKMB("asd"));
+		Assert.AreEqual("True", Utility.FormatMoneyToKMB(true));
+	}
+
+	#endregion
+
+	[Test]
+	public void IsNumericTypeFalse()
+	{
+		Assert.False(this.IsNumericType());
+		Assert.False(new GameObject().IsNumericType());
+		Assert.False(new object().IsNumericType());
+	}
+
+	[Test]
+	public void IsNumericTypeTrue()
+	{
+		Assert.True(32.IsNumericType());
+		Assert.True(32f.IsNumericType());
+		Assert.True(32L.IsNumericType());
+		Assert.True((-32f).IsNumericType());
+		Assert.True((-32L).IsNumericType());
+		Assert.True(0b1.IsNumericType());
+		Assert.True(0x2.IsNumericType());
+		Assert.True((-0x2).IsNumericType());
+		Assert.True(((Int16)2).IsNumericType());
+		Assert.True(((Int64)2).IsNumericType());
+		Assert.True(32d.IsNumericType());
+		Assert.True((-32d).IsNumericType());
+		Assert.True(32m.IsNumericType());
+		Assert.True((-32m).IsNumericType());
+		Assert.True((-32u).IsNumericType());
+		Assert.True(32u.IsNumericType());
+		
+
+
+
+
+	}
+}
