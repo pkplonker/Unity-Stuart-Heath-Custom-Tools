@@ -26,7 +26,7 @@ namespace StuartHeathTools
 		{
 			if (amount >= 1000000000) return $"{amount / 1000000000}B";
 			if (amount >= 1000000) return $"{amount / 1000000}M";
-			if (amount >= 1000) return $"{amount / 100000}K";
+			if (amount >= 1000) return $"{amount / 1000}K";
 			return amount.ToString();
 		}
 
