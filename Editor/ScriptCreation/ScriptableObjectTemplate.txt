@@ -1,0 +1,14 @@
+ //
+ // Copyright (C) #YEAR# Stuart Heath. All rights reserved.
+ //
+using UnityEngine;
+
+    /// <summary>
+    ///#SCRIPTNAME# full description
+    /// </summary>
+    	[CreateAssetMenu(fileName = "filename",menuName = "menuname")]
+
+public class #SCRIPTNAME# : ScriptableObject
+{
+  
+}

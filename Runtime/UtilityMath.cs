@@ -1,6 +1,7 @@
 //
 // Copyright (C) 2022 Stuart Heath. All rights reserved.
 //
+
 using UnityEngine;
 
 namespace StuartHeathTools
@@ -8,7 +9,7 @@ namespace StuartHeathTools
 	/// <summary>
 	/// Utility class for math.
 	/// </summary>
-	public static class UtilityMath 
+	public static class UtilityMath
 	{
 		public static readonly float TAU = 6.283185307179586f;
 		public static float DegToRad(float deg) => deg * (TAU / 360.0f);
@@ -26,6 +27,13 @@ namespace StuartHeathTools
 			if (angle < 0) angle += 360;
 			return angle + 90;
 		}
-		
+
+		public static float LinearRemap(this float value,
+			float valueRangeMin, float valueRangeMax,
+			float newRangeMin, float newRangeMax)
+		{
+			return (value - valueRangeMin) / (valueRangeMax - valueRangeMin) * (newRangeMax - newRangeMin) +
+			       newRangeMin;
+		}
 	}
 }
