@@ -11,7 +11,6 @@ namespace Editor
 	/// <summary>
 	///SetupInitialStructure full description
 	/// </summary>
-	[CustomEditor(typeof(SetupInitialStructure))]
 	public class SetupInitialStructure
 	{
 		[MenuItem("Stuart/Setup InitialFolder Structure", false, 99999)]
