@@ -19,7 +19,10 @@ namespace Editor
 		[MenuItem("Window/Stuart Tools Panel", false, 0)]
 		public static void ShowWindow()
 		{
-			GetWindow<StuartToolsPanel>("Stuart Tools");
+			UpdateToolsPackage.GetPackageVersionNumber();
+
+			GetWindow<StuartToolsPanel>("Stuart Tools" + UpdateToolsPackage.currentVersionNumber);
+
 		}
 
 		private void OnGUI()
@@ -30,7 +33,13 @@ namespace Editor
 			EditorGUILayout.Space();
 			ScriptGenerationButtons();
 			UtilityEditor.LineBreak();
+			
+
+			
+			
 			GUILayout.FlexibleSpace();
+			UpdateToolsPackage.GetPackageVersionNumber();
+			GUILayout.Label("Version "+(UpdateToolsPackage.currentVersionNumber==""? "...":UpdateToolsPackage.currentVersionNumber),style );
 			if (GUILayout.Button("Update Tools Package"))
 			{
 				UpdateToolsPackage.UpdatePackageFromGit();

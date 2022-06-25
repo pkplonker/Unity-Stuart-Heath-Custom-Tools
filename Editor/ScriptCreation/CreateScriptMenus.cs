@@ -21,7 +21,7 @@ namespace StuartHeathToolsEditor
 
 
 		[MenuItem("Assets/Stuart/Create Scripts/Create MonoBehaviour Script", false, 12)]
-		[MenuItem("Stuart/Create MonoBehaviour Script", false, 0)]
+		[MenuItem("Stuart/Create Scripts/Create MonoBehaviour Script", false, 0)]
 		public static void CreateMonoBehaviourScript()
 		{
 			var pathToNewFile = EditorUtility.SaveFilePanel("Create MonoBehaviour Script", GetCurrentPath(false),
@@ -32,7 +32,7 @@ namespace StuartHeathToolsEditor
 		}
 
 		[MenuItem("Assets/Stuart/Create Scripts/Create Scriptable Object Script", false, 14)]
-		[MenuItem("Stuart/Create Scriptable Object Script", false, 2)]
+		[MenuItem("Stuart/Create Scripts/Create Scriptable Object Script", false, 2)]
 		public static void CreateSOScript()
 		{
 			var pathToNewFile = EditorUtility.SaveFilePanel("Create ScriptableObject Script", GetCurrentPath(false),
@@ -44,7 +44,7 @@ namespace StuartHeathToolsEditor
 
 
 		[MenuItem("Assets/Stuart/Create Scripts/Create Editor Script", false, 13)]
-		[MenuItem("Stuart/Create Editor Script", false, 1)]
+		[MenuItem("Stuart/Create Scripts/Create Editor Script", false, 1)]
 		public static void CreateEditorScript()
 		{
 			var pathToNewFile =
