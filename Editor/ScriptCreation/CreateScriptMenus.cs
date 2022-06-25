@@ -20,7 +20,7 @@ namespace StuartHeathToolsEditor
 		private static readonly string scriptableObjectTemplateTxt = "/ScriptableObjectTemplate.txt";
 
 
-		[MenuItem("Assets/Stuart/Create Scripts/Create MonoBehaviour Script", false, 0)]
+		[MenuItem("Assets/Stuart/Create Scripts/Create MonoBehaviour Script", false, 12)]
 		[MenuItem("Stuart/Create MonoBehaviour Script", false, 0)]
 		public static void CreateMonoBehaviourScript()
 		{
@@ -31,8 +31,8 @@ namespace StuartHeathToolsEditor
 			GenerateScriptFromTemplate(pathToNewFile, pathToTemplate);
 		}
 
-		[MenuItem("Assets/Stuart/Create Scripts/Create Scriptable Object Script", false, 0)]
-		[MenuItem("Stuart/Create Scriptable Object Script", false, 0)]
+		[MenuItem("Assets/Stuart/Create Scripts/Create Scriptable Object Script", false, 14)]
+		[MenuItem("Stuart/Create Scriptable Object Script", false, 2)]
 		public static void CreateSOScript()
 		{
 			var pathToNewFile = EditorUtility.SaveFilePanel("Create ScriptableObject Script", GetCurrentPath(false),
@@ -43,7 +43,7 @@ namespace StuartHeathToolsEditor
 		}
 
 
-		[MenuItem("Assets/Stuart/Create Scripts/Create Editor Script", false, 1)]
+		[MenuItem("Assets/Stuart/Create Scripts/Create Editor Script", false, 13)]
 		[MenuItem("Stuart/Create Editor Script", false, 1)]
 		public static void CreateEditorScript()
 		{

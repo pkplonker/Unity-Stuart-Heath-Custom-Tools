@@ -21,7 +21,7 @@ namespace StuartHeathTools
 		public static string WithColor(this string text, Color color) =>
 			"<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
 
-		
+
 		public static string FormatMoneyToKMB<T>(T amount)
 		{
 			if (!amount.IsNumericType()) return amount.ToString();
@@ -68,15 +68,24 @@ namespace StuartHeathTools
 
 		public static void ResetTransform(this Transform t)
 		{
-			t.position=Vector3.zero;
+			t.position = Vector3.zero;
 			t.rotation = Quaternion.identity;
-			t.localRotation=Quaternion.identity;
+			t.localRotation = Quaternion.identity;
 			t.localScale = Vector3.zero;
 		}
 
 		public static T GetOrAddComponent<T>(this GameObject go) where T : Component
 		{
 			return go.TryGetComponent(out T component) ? component : go.AddComponent<T>();
+		}
+
+		public static void QuitApplication()
+		{
+			Debug.Log("Quitting");
+			Application.Quit();
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+#endif
 		}
 	}
 }
