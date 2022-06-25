@@ -24,11 +24,17 @@ namespace Editor
 
 		private void OnGUI()
 		{
+			
 			var style = new GUIStyle(GUI.skin.label) {alignment = TextAnchor.MiddleCenter};
-			GUILayout.Label("Create New Script", style);
+			GUILayout.Label("New Scripts", style);
 			EditorGUILayout.Space();
 			ScriptGenerationButtons();
 			UtilityEditor.LineBreak();
+			GUILayout.FlexibleSpace();
+			if (GUILayout.Button("Update Tools Package"))
+			{
+				UpdateToolsPackage.UpdatePackageFromGit();
+			}
 		}
 
 		private static void ScriptGenerationButtons()
