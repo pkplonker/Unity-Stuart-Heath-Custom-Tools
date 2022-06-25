@@ -5,6 +5,7 @@ namespace StuartHeathTools
 	/// <summary>
 	///CanvasGroupBase - base class for UI window controllers
 	/// </summary>
+	[RequireComponent(typeof(CanvasGroup))]
 	public abstract class CanvasGroupBase : MonoBehaviour
 	{
 		[SerializeField] protected CanvasGroup canvasGroup;
