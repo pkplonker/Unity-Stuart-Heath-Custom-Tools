@@ -80,6 +80,7 @@ namespace StuartHeathToolsEditor
 			if (path.Contains("Packages/")) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
 			return !path.Contains(".") ? path : UtilityEditor.GetFolderPathFromFilePath(path);
 		}
-		#endif
+		
 	}
+#endif
 }
