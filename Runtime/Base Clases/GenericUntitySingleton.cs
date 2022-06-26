@@ -22,11 +22,12 @@ namespace StuartHeathTools
 				return instance;
 			}
 		}
-		protected void Awake()
+		protected virtual void Awake()
 		{
 			if (instance != null)
 			{
 				Destroy(gameObject);
+				Debug.LogWarning("Deleted duplicate instance " + nameof(T) + " on gameobject" + gameObject.name);
 				return;
 			}
 			instance = GetComponent<T>();
