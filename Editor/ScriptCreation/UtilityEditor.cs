@@ -57,5 +57,6 @@ namespace Editor.ScriptCreation
 		public static string GetFolderPathFromFile(Type t) =>
 			GetFolderPathFromFilePath(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(t)));
 	}
-	#endif	
+
 }
+#endif	
