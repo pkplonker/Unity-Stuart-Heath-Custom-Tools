@@ -1,7 +1,7 @@
 //
 // Copyright (C) 2022 Stuart Heath. All rights reserved.
 //
-
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -12,7 +12,7 @@ namespace Editor
 	///SetupInitialStructure full description
 	/// </summary>
 	///
-	#if UNITY_EDITOR
+
 	public class SetupInitialStructure
 	{
 		[MenuItem("Stuart/Setup InitialFolder Structure", false, 99999)]
@@ -33,5 +33,6 @@ namespace Editor
 			}
 		}
 	}
-	#endif	
+
 }
+#endif	

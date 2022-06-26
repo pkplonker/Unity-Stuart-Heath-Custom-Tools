@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
 using UnityEditor.PackageManager;
@@ -7,7 +8,6 @@ using UnityEngine;
 
 namespace Editor
 {
-#if UNITY_EDITOR
 	public class UpdateToolsPackage : UnityEditor.Editor
 	{
 		static AddRequest Request;
@@ -58,6 +58,5 @@ namespace Editor
 			currentVersionNumber = info.version;
 		}
 	}
-
-#endif
 }
+#endif

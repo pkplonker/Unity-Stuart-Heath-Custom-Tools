@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -21,3 +22,4 @@ public class AssetDatabaseExtensions
 		return string.IsNullOrWhiteSpace(relativePath) ? null : Path.GetDirectoryName(relativePath);
 	}
 }
+#endif

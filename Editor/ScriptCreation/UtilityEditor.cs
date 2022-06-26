@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System;
 using System.IO;
 using UnityEditor;
@@ -9,7 +11,6 @@ namespace Editor.ScriptCreation
 	/// Utility class for custom editor scripts.
 	/// </summary>
 	
-	#if UNITY_EDITOR
 	public static class UtilityEditor
 	{
 		public static void LineBreak(int height = 1)

@@ -1,6 +1,7 @@
 //
 // Copyright (C) 2022 Stuart Heath. All rights reserved.
 //
+#if UNITY_EDITOR
 
 using Editor.ScriptCreation;
 using StuartHeathToolsEditor;
@@ -12,7 +13,6 @@ namespace Editor
 	/// <summary>
 	///DemoWindow full description
 	/// </summary>
-	#if UNITY_EDITOR
 	public class StuartToolsPanel : EditorWindow
 	{
 		[MenuItem("Stuart/Tools Panel", false, 0)]
@@ -60,5 +60,6 @@ namespace Editor
 			}
 		}
 	}
-	#endif	
+	
 }
+#endif	

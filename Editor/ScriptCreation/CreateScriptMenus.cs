@@ -1,7 +1,7 @@
 //
 // Copyright (C) 2022 Stuart Heath. All rights reserved.
 //
-
+#if UNITY_EDITOR
 using System;
 using System.IO;
 using Editor.ScriptCreation;
@@ -13,7 +13,7 @@ namespace StuartHeathToolsEditor
 	/// <summary>
 	///CreateScriptMenus - Used to create the script menus with custom templates. Alternative templates can be used by setting the template path and stored in the same folder.
 	/// </summary>
-	#if UNITY_EDITOR
+
 	public class CreateScriptMenus
 	{
 		private static readonly string monobehaviourTemplateTxt = "/MonoBehaviourTemplate.txt";
@@ -82,5 +82,5 @@ namespace StuartHeathToolsEditor
 		}
 		
 	}
-#endif
 }
+#endif
