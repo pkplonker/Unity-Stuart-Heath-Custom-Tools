@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using System.Linq;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using PackageInfo = UnityEditor.PackageManager.PackageInfo;
+#if UNITY_EDITOR
 
 public class UpdateToolsPackage : UnityEditor.Editor
 {
@@ -56,4 +54,5 @@ public class UpdateToolsPackage : UnityEditor.Editor
 		if (info == null) return;
 		currentVersionNumber = info.version;
 	}
+	#endif
 }

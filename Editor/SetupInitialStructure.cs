@@ -11,6 +11,8 @@ namespace Editor
 	/// <summary>
 	///SetupInitialStructure full description
 	/// </summary>
+	///
+	#if UNITY_EDITOR
 	public class SetupInitialStructure
 	{
 		[MenuItem("Stuart/Setup InitialFolder Structure", false, 99999)]
@@ -31,4 +33,5 @@ namespace Editor
 			}
 		}
 	}
+	#endif	
 }

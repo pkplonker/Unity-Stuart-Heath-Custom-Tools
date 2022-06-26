@@ -13,6 +13,7 @@ namespace StuartHeathToolsEditor
 	/// <summary>
 	///CreateScriptMenus - Used to create the script menus with custom templates. Alternative templates can be used by setting the template path and stored in the same folder.
 	/// </summary>
+	#if UNITY_EDITOR
 	public class CreateScriptMenus
 	{
 		private static readonly string monobehaviourTemplateTxt = "/MonoBehaviourTemplate.txt";
@@ -79,5 +80,6 @@ namespace StuartHeathToolsEditor
 			if (path.Contains("Packages/")) return Application.dataPath + (isEditor ? "/Editor" : "/Scripts");
 			return !path.Contains(".") ? path : UtilityEditor.GetFolderPathFromFilePath(path);
 		}
+		#endif
 	}
 }

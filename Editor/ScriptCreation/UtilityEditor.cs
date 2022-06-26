@@ -8,7 +8,9 @@ namespace Editor.ScriptCreation
 	/// <summary>
 	/// Utility class for custom editor scripts.
 	/// </summary>
-	public class UtilityEditor
+	
+	#if UNITY_EDITOR
+	public static class UtilityEditor
 	{
 		public static void LineBreak(int height = 1)
 		{
@@ -54,4 +56,5 @@ namespace Editor.ScriptCreation
 		public static string GetFolderPathFromFile(Type t) =>
 			GetFolderPathFromFilePath(AssetDatabase.GUIDToAssetPath(GetMonoScriptPathFor(t)));
 	}
+	#endif	
 }

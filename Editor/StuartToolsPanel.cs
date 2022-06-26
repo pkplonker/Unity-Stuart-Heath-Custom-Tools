@@ -12,6 +12,7 @@ namespace Editor
 	/// <summary>
 	///DemoWindow full description
 	/// </summary>
+	#if UNITY_EDITOR
 	public class StuartToolsPanel : EditorWindow
 	{
 		[MenuItem("Stuart/Tools Panel", false, 0)]
@@ -59,4 +60,5 @@ namespace Editor
 			}
 		}
 	}
+	#endif	
 }
