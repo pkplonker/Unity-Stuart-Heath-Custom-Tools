@@ -55,7 +55,7 @@ namespace Editor
 					CreateScriptMenus.CreateMonoBehaviourScript();
 				if (GUILayout.Button("New Editor", EditorStyles.miniButtonMid))
 					CreateScriptMenus.CreateMonoBehaviourScript();
-				if (GUILayout.Button("New MonoBehaviour", EditorStyles.miniButtonRight))
+				if (GUILayout.Button("New Scriptable Object", EditorStyles.miniButtonRight))
 					CreateScriptMenus.CreateSOScript();
 			}
 		}
