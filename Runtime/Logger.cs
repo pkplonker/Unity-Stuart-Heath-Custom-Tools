@@ -22,7 +22,7 @@ public class Logger : GenericUnitySingleton<Logger>
 
 	public void LogWithColor(string message, Color color)
 	{
-		text.text += message.WithColor(color) + "\r\n";
+		text.text +=DateTime.Now.ToString("HH:mm:ss.fff") + ": "+ message.WithColor(color) + "\r\n";
 		StartCoroutine(PushToBottom());
 	}
 
