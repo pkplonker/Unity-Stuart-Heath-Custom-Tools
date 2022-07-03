@@ -22,13 +22,27 @@ public class Logger : GenericUnitySingleton<Logger>
 
 	public void LogWithColor(string message, Color color)
 	{
-		text.text += message.WithColor(color) +"\r\n";
+		text.text += message.WithColor(color) + "\r\n";
 		StartCoroutine(PushToBottom());
 	}
 
-	public void Log(string message) => LogWithColor(message, Color.white);
-	public void LogWarning(string message) => LogWithColor(message, Color.yellow);
-	public void LogError(string message) => LogWithColor(message, Color.red);
+	public void Log(string message)
+	{
+		Debug.Log(message);
+		LogWithColor(message, Color.white);
+	}
+
+	public void LogWarning(string message)
+	{
+		Debug.LogWarning(message);
+		LogWithColor(message, Color.yellow);
+	}
+
+	public void LogError(string message)
+	{
+		Debug.LogError(message);
+		LogWithColor(message, Color.red);
+	}
 
 
 	private IEnumerator PushToBottom()
