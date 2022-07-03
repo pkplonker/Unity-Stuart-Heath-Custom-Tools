@@ -3,6 +3,8 @@
 //
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using StuartHeathTools;
 using TMPro;
@@ -12,22 +14,27 @@ using UnityEngine.UI;
 /// <summary>
 ///Logger full description
 /// </summary>
-public class Logger : MonoBehaviour
+public class Logger : GenericUnitySingleton<Logger>
 {
-	private static Transform container;
+	[SerializeField] private TextMeshProUGUI text;
+	[SerializeField] private ScrollRect scrollRect;
 
-	private void Awake() => container = GetComponentInChildren<VerticalLayoutGroup>().transform;
 
-
-	public static void LogWithColor(string message, Color color)
+	public void LogWithColor(string message, Color color)
 	{
-		var x = new GameObject().AddComponent<TextMeshProUGUI>();
-		x.transform.SetParent(container);
-		x.enableAutoSizing = true;
-		x.text = message.WithColor(Color.white);
+		text.text += message.WithColor(color) +"\r\n";
+		StartCoroutine(PushToBottom());
 	}
 
-	public static void Log(string message) => LogWithColor(message, Color.white);
-	public static void LogWarning(string message) => LogWithColor(message, Color.yellow);
-	public static void LogError(string message) => LogWithColor(message, Color.red);
+	public void Log(string message) => LogWithColor(message, Color.white);
+	public void LogWarning(string message) => LogWithColor(message, Color.yellow);
+	public void LogError(string message) => LogWithColor(message, Color.red);
+
+
+	private IEnumerator PushToBottom()
+	{
+		yield return new WaitForEndOfFrame();
+		scrollRect.verticalNormalizedPosition = 0;
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform) text.transform);
+	}
 }
