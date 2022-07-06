@@ -11,64 +11,49 @@ public class UtilityTests
 	public void FormatMoneyToKMBSub1000()
 	{
 		Assert.AreEqual("576", Utility.FormatMoneyToKMB(576));
-		Assert.AreEqual("576", Utility.FormatMoneyToKMB(576f));
+		Assert.AreEqual("576", Utility.FormatMoneyToKMB((long)576f));
 		Assert.AreEqual("576", Utility.FormatMoneyToKMB(576L));
 		Assert.AreEqual("-256", Utility.FormatMoneyToKMB(-256));
-		Assert.AreEqual("-256", Utility.FormatMoneyToKMB(-256f));
+		Assert.AreEqual("-256", Utility.FormatMoneyToKMB((long)-256f));
 		Assert.AreEqual("-256", Utility.FormatMoneyToKMB(-256L));
 	}
 
 	[Test]
 	public void FormatMoneyToKMBk()
 	{
-		Assert.AreEqual("5K", Utility.FormatMoneyToKMB(5760));
-		Assert.AreEqual("5.76K", Utility.FormatMoneyToKMB(5760f));
-		Assert.AreEqual("5K", Utility.FormatMoneyToKMB(5760L));
-		Assert.AreEqual("-2K", Utility.FormatMoneyToKMB(-2560));
-		Assert.AreEqual("-2.56K", Utility.FormatMoneyToKMB(-2560f));
-		Assert.AreEqual("-2K", Utility.FormatMoneyToKMB(-2560L));
+		Assert.AreEqual("5.8K", Utility.FormatMoneyToKMB(5760));
+		Assert.AreEqual("5.8K", Utility.FormatMoneyToKMB((long)5760f));
+		Assert.AreEqual("5.8K", Utility.FormatMoneyToKMB(5760L));
+		Assert.AreEqual("-2.56K", Utility.FormatMoneyToKMB(-2560));
+		Assert.AreEqual("-2.6K", Utility.FormatMoneyToKMB((long)-2560f));
+		Assert.AreEqual("-2.6K", Utility.FormatMoneyToKMB(-2560L));
 	}
 
 	[Test]
 	public void FormatMoneyToKMBm()
 
 	{
-		Assert.AreEqual("5M", Utility.FormatMoneyToKMB(5760000));
-		Assert.AreEqual("5.76M", Utility.FormatMoneyToKMB(5760000f));
-		Assert.AreEqual("5M", Utility.FormatMoneyToKMB(5760000L));
-		Assert.AreEqual("-2M", Utility.FormatMoneyToKMB(-2560000));
-		Assert.AreEqual("-2.56M", Utility.FormatMoneyToKMB(-2560000f));
-		Assert.AreEqual("-2M", Utility.FormatMoneyToKMB(-2560000L));
+		Assert.AreEqual("5.76M", Utility.FormatMoneyToKMB(5760000));
+		Assert.AreEqual("5.76M", Utility.FormatMoneyToKMB((long)5760000f));
+		Assert.AreEqual("5.76M", Utility.FormatMoneyToKMB(5760000L));
+		Assert.AreEqual("-2.56M", Utility.FormatMoneyToKMB(-2560000));
+		Assert.AreEqual("-2.56M", Utility.FormatMoneyToKMB((long)-2560000f));
+		Assert.AreEqual("-2.56M", Utility.FormatMoneyToKMB(-2560000L));
 	}
 
 	[Test]
 	public void FormatMoneyToKMBb()
 	{
-		Assert.AreEqual("5B", Utility.FormatMoneyToKMB(5760000000));
-		Assert.AreEqual("5.76B", Utility.FormatMoneyToKMB(5760000000f));
-		Assert.AreEqual("5B", Utility.FormatMoneyToKMB(5760000000L));
-		Assert.AreEqual("-2B", Utility.FormatMoneyToKMB(-2560000000));
-		Assert.AreEqual("-2.56B", Utility.FormatMoneyToKMB(-2560000000f));
-		Assert.AreEqual("-2B", Utility.FormatMoneyToKMB(-2560000000L));
+		Assert.AreEqual("5.76B", Utility.FormatMoneyToKMB(5760000000));
+		Assert.AreEqual("5.76B", Utility.FormatMoneyToKMB((long)5760000000f));
+		Assert.AreEqual("5.76B", Utility.FormatMoneyToKMB(5760000000L));
+		Assert.AreEqual("-2.56B", Utility.FormatMoneyToKMB(-2560000000));
+		Assert.AreEqual("-2.56B", Utility.FormatMoneyToKMB((long)-2560000000f));
+		Assert.AreEqual("-2.56B", Utility.FormatMoneyToKMB(-2560000000L));
 	}
+	
 
-	[Test]
-	public void FormatMoneyToKMBMax()
-	{
-		Assert.AreEqual("18446744T", Utility.FormatMoneyToKMB(ulong.MaxValue));
-		Assert.AreEqual("9223372T", Utility.FormatMoneyToKMB(long.MaxValue));
-		Assert.AreEqual("3.402824E+26T", Utility.FormatMoneyToKMB(float.MaxValue));
-		Assert.AreEqual("2B", Utility.FormatMoneyToKMB(int.MaxValue));
-		Assert.AreEqual("1.79769313486232E+296T", Utility.FormatMoneyToKMB(double.MaxValue));
-	}
-
-	[Test]
-	public void FormatMoneyToKMBError()
-	{
-		Assert.AreEqual("asd", Utility.FormatMoneyToKMB("asd"));
-		Assert.AreEqual("True", Utility.FormatMoneyToKMB(true));
-	}
-
+	
 	#endregion
 
 	[Test]

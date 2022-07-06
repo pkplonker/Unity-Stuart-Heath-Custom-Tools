@@ -3,6 +3,7 @@
 //
 
 using System;
+using System.Globalization;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -21,15 +22,13 @@ namespace StuartHeathTools
 		public static string WithColor(this string text, Color color) =>
 			"<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
 
-		public static string FormatMoneyToKMB(long num)
+		public static string FormatMoneyToKMB(this decimal num)
 		{
-			if (num >= 100000000) return (num / 1000000D).ToString("0.#M");
-			if (num >= 1000000) return (num / 1000000D).ToString("0.##M");
-			if (num >= 100000) return (num / 1000D).ToString("0.#k");
-			if (num >= 10000) return (num / 1000D).ToString("0.##k");
+			if (num > 999999999 || num < -999999999) return num.ToString("0,,,.###B", CultureInfo.InvariantCulture);
+			if (num > 999999 || num < -999999) return num.ToString("0,,.##M", CultureInfo.InvariantCulture);
+			if (num > 999 || num < -999) return num.ToString("0,.#K", CultureInfo.InvariantCulture);
+			return num.ToString(CultureInfo.InvariantCulture);
 			
-
-			return num.ToString("#,0");
 		}
 
 
