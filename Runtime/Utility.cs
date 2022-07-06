@@ -21,21 +21,17 @@ namespace StuartHeathTools
 		public static string WithColor(this string text, Color color) =>
 			"<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
 
-
-		public static string FormatMoneyToKMB<T>(T amount)
+		public static string FormatMoneyToKMB(long num)
 		{
-			if (!amount.IsNumericType()) return amount.ToString();
-			dynamic x = amount;
-			if (x >= 1000000000000) return $"{x / 1000000000000}T";
-			if (x >= 1000000000) return $"{x / 1000000000}B";
-			if (x >= 1000000) return $"{x / 1000000}M";
-			if (x >= 1000) return $"{x / 1000}K";
+			if (num >= 100000000) return (num / 1000000D).ToString("0.#M");
+			if (num >= 1000000) return (num / 1000000D).ToString("0.##M");
+			if (num >= 100000) return (num / 1000D).ToString("0.#k");
+			if (num >= 10000) return (num / 1000D).ToString("0.##k");
+			
 
-			if (x <= -1000000000000) return $"{x / 1000000000000}T";
-			if (x <= -1000000000) return $"{x / 1000000000}B";
-			if (x <= -1000000) return $"{x / 1000000}M";
-			return x <= -1000 ? $"{x / 1000}K" : (string) x.ToString();
+			return num.ToString("#,0");
 		}
+
 
 		public static bool IsNumericType(this object o)
 		{
