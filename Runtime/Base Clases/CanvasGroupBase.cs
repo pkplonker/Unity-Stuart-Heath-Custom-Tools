@@ -35,9 +35,10 @@ namespace StuartHeathTools
 						cor = null;
 					}
 				}
-				canvasGroup.interactable = true;
-				canvasGroup.blocksRaycasts = true;
+				
 			}
+			canvasGroup.interactable = true;
+			canvasGroup.blocksRaycasts = true;
 		}
 
 		protected virtual void HideUI(float fadeTime = 0f)
