@@ -21,22 +21,23 @@ namespace StuartHeathTools
 				else
 				{
 					StopCoroutine(cor);
-					
+
 					cor = StartCoroutine(FadeOverTime(0, 1, fadeTime));
 				}
 			}
 			else
 			{
-				if(cor==null) canvasGroup.alpha = 1f;
-				else
 				{
-					StopCoroutine(cor);
-					cor = null;
+					canvasGroup.alpha = 1f;
+					if (cor != null)
+					{
+						StopCoroutine(cor);
+						cor = null;
+					}
 				}
+				canvasGroup.interactable = true;
+				canvasGroup.blocksRaycasts = true;
 			}
-
-			canvasGroup.interactable = true;
-			canvasGroup.blocksRaycasts = true;
 		}
 
 		protected virtual void HideUI(float fadeTime = 0f)
@@ -48,19 +49,20 @@ namespace StuartHeathTools
 				else
 				{
 					StopCoroutine(cor);
-					
+
 					cor = StartCoroutine(FadeOverTime(1, 0, fadeTime));
 				}
 			}
 			else
 			{
-				if(cor==null) canvasGroup.alpha = 0f;
-				else
+				canvasGroup.alpha = 0f;
+				if (cor != null)
 				{
 					StopCoroutine(cor);
 					cor = null;
 				}
 			}
+
 			canvasGroup.interactable = false;
 			canvasGroup.blocksRaycasts = false;
 		}
