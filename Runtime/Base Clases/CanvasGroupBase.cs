@@ -10,12 +10,31 @@ namespace StuartHeathTools
 	public abstract class CanvasGroupBase : MonoBehaviour
 	{
 		[SerializeField] protected CanvasGroup canvasGroup;
+		private Coroutine cor;
 
 		protected virtual void ShowUI(float fadeTime = 0f)
 		{
 			if (canvasGroup == null) canvasGroup = GetComponent<CanvasGroup>();
-			if (fadeTime > 0) StartCoroutine(FadeOverTime(0, 1, fadeTime));
-			else canvasGroup.alpha = 1f;
+			if (fadeTime > 0)
+			{
+				if (cor == null) cor = StartCoroutine(FadeOverTime(0, 1, fadeTime));
+				else
+				{
+					StopCoroutine(cor);
+					
+					cor = StartCoroutine(FadeOverTime(0, 1, fadeTime));
+				}
+			}
+			else
+			{
+				if(cor==null) canvasGroup.alpha = 1f;
+				else
+				{
+					StopCoroutine(cor);
+					cor = null;
+				}
+			}
+
 			canvasGroup.interactable = true;
 			canvasGroup.blocksRaycasts = true;
 		}
@@ -23,8 +42,25 @@ namespace StuartHeathTools
 		protected virtual void HideUI(float fadeTime = 0f)
 		{
 			if (canvasGroup == null) canvasGroup = GetComponent<CanvasGroup>();
-			if (fadeTime > 0) StartCoroutine(FadeOverTime(1, 0, fadeTime));
-			else canvasGroup.alpha = 0f;
+			if (fadeTime > 0)
+			{
+				if (cor == null) cor = StartCoroutine(FadeOverTime(1, 0, fadeTime));
+				else
+				{
+					StopCoroutine(cor);
+					
+					cor = StartCoroutine(FadeOverTime(1, 0, fadeTime));
+				}
+			}
+			else
+			{
+				if(cor==null) canvasGroup.alpha = 0f;
+				else
+				{
+					StopCoroutine(cor);
+					cor = null;
+				}
+			}
 			canvasGroup.interactable = false;
 			canvasGroup.blocksRaycasts = false;
 		}
@@ -37,6 +73,7 @@ namespace StuartHeathTools
 				canvasGroup.alpha = Mathf.Lerp(start, end, normalizedTime);
 				yield return null;
 			}
+
 			canvasGroup.alpha = end;
 		}
 	}
