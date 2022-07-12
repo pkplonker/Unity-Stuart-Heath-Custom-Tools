@@ -1,7 +1,7 @@
 //
 // Copyright (C) 2022 Stuart Heath. All rights reserved.
 //
-
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -29,3 +29,4 @@ namespace Editor
 		}
 	}
 }
+#endif
