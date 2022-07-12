@@ -18,7 +18,11 @@ public class Logger : GenericUnitySingleton<Logger>
 {
 	[SerializeField] private TextMeshProUGUI text;
 	[SerializeField] private ScrollRect scrollRect;
+	[SerializeField] private Canvas canvas;
+	[SerializeField] private Image background;
 
+	public void SetCanvasLayer(int v) => canvas.sortingOrder = v;
+	public void SetBackgroundColor(Color c) => background.color = c;
 
 	public void LogWithColor(string message, Color color)
 	{
