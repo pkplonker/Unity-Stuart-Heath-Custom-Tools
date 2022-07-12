@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using StuartHeathTools;
 using UnityEngine;
 
-public class Vibration : MonoBehaviour
+public class Vibration : GenericUnitySingleton<Vibration>
 {
 #if UNITY_ANDROID && !UNITY_EDITOR
     public static AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
