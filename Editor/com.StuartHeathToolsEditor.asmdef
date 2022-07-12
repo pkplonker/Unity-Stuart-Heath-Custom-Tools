@@ -2,7 +2,8 @@
     "name": "StuartHeathEditor",
     "rootNamespace": "",
     "references": [
-        "GUID:343deaaf83e0cee4ca978e7df0b80d21"
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:815f81d9df028bb45a01c275e91770f4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -14,7 +14,7 @@ using UnityEngine.UI;
 /// <summary>
 ///Logger full description
 /// </summary>
-public class Logger : GenericUnitySingleton<Logger>
+public class LoggerOutput : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI text;
 	[SerializeField] private ScrollRect scrollRect;
@@ -24,9 +24,16 @@ public class Logger : GenericUnitySingleton<Logger>
 	public void SetCanvasLayer(int v) => canvas.sortingOrder = v;
 	public void SetBackgroundColor(Color c) => background.color = c;
 
+
+	private void OnEnable() => Logger.Register(this);
+
+	private void OnDisable() => Logger.Deregister();
+
+
 	public void LogWithColor(string message, Color color)
 	{
-		text.text +=DateTime.Now.ToString("HH:mm:ss.fff") + ": "+ message.WithColor(color) + "\r\n";
+		if (text == null) return;
+		text.text += DateTime.Now.ToString("HH:mm:ss.fff") + ": " + message.WithColor(color) + "\r\n";
 		StartCoroutine(PushToBottom());
 	}
 
@@ -46,6 +53,12 @@ public class Logger : GenericUnitySingleton<Logger>
 	{
 		Debug.LogError(message);
 		LogWithColor(message, Color.red);
+	}
+
+	public void ClearOutput()
+	{
+		if (text == null) return;
+		text.text = string.Empty;
 	}
 
 
