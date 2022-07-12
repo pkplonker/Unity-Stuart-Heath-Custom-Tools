@@ -237,6 +237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1968738598628690839}
   scrollRect: {fileID: 715132312080287707}
+  canvas: {fileID: 715132312259122310}
+  background: {fileID: 715132312080287706}
 --- !u!1 &715132312929406549
 GameObject:
   m_ObjectHideFlags: 0
