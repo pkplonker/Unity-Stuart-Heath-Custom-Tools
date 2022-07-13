@@ -8,11 +8,8 @@ public static class Logger
 
 	public static void LogWithColor(string message, Color color)
 	{
-		if (loggerOutput == null)
-		{
-			Debug.Log("Logger output not identified");
-			return;
-		}
+		if (loggerOutput == null)return;
+		
 
 		loggerOutput.LogWithColor(message,color);
 	}
