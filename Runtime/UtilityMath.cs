@@ -15,6 +15,15 @@ namespace StuartHeathTools
 		public static float DegToRad(float deg) => deg * (TAU / 360.0f);
 		public static float RadToDeg(float rad) => rad * (360.0f / TAU);
 		public static float ClampAngle(float angle, float min, float max) => Mathf.Clamp(angle, min, max);
+		public static float Clamp0360(float eulerAngles)
+		{
+			float result = eulerAngles - Mathf.CeilToInt(eulerAngles / 360f) * 360f;
+			if (result < 0)
+			{
+				result += 360f;
+			}
+			return result;
+		}
 		public static float ClampAngle360(float angle) => ClampAngle(angle, 0.0f, 360.0f);
 		public static float ClampAngle180(float angle) => ClampAngle(angle, -180.0f, 180.0f);
 		public static float ClampAngle90(float angle) => ClampAngle(angle, -90.0f, 90.0f);
