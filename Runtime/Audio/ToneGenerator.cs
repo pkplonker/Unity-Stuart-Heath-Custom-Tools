@@ -1,42 +1,41 @@
 using UnityEngine;
 
-namespace Audio;
-
-public static class ToneGenerator 
+namespace Audio
 {
-	private static float currentFreq;
-	
-	public static AudioClip GenerateFrequency(float frequency, int sampleRate)
+	public static class ToneGenerator
 	{
-		var clip = CreateToneClip(frequency, sampleRate);
-		return clip;
-	}
+		private static float currentFreq;
 
-	private static AudioClip CreateToneClip(float frequency, int sampleRate)
-	{
-		AudioClip clip = AudioClip.Create(frequency.ToString(), sampleRate, 1, sampleRate, false);
-		var size = clip.frequency * (int) Mathf.Ceil(clip.length);
-		float[] data = new float[size];
-		for (int i = 0; i < data.Length; i++)
+		public static AudioClip GenerateFrequency(float frequency, int sampleRate)
 		{
-			data[i] = Mathf.Sin(2 * Mathf.PI * frequency * i / sampleRate);
+			var clip = CreateToneClip(frequency, sampleRate);
+			return clip;
 		}
 
-		clip.SetData(data, 0);
-		return clip;
-	}
-	
-	public class ToneClipData
-	{
-		public float frequency;
-		public AudioClip clip;
-		
-		public ToneClipData(float frequency, int sampleRate=44100)
+		private static AudioClip CreateToneClip(float frequency, int sampleRate)
 		{
-			this.frequency = frequency;
-			clip = CreateToneClip(frequency, sampleRate);
+			AudioClip clip = AudioClip.Create(frequency.ToString(), sampleRate, 1, sampleRate, false);
+			var size = clip.frequency * (int) Mathf.Ceil(clip.length);
+			float[] data = new float[size];
+			for (int i = 0; i < data.Length; i++)
+			{
+				data[i] = Mathf.Sin(2 * Mathf.PI * frequency * i / sampleRate);
+			}
+
+			clip.SetData(data, 0);
+			return clip;
+		}
+
+		public class ToneClipData
+		{
+			public float frequency;
+			public AudioClip clip;
+
+			public ToneClipData(float frequency, int sampleRate = 44100)
+			{
+				this.frequency = frequency;
+				clip = CreateToneClip(frequency, sampleRate);
+			}
 		}
 	}
-
-	
 }
