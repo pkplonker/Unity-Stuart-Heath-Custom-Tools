@@ -14,6 +14,8 @@ namespace StuartHeathTools
 	/// </summary>
 	public static class UtilityRandom
 	{
+		private static System.Random rng = new System.Random();  
+
 		public static int RandomSign() => Random.value < 0.5f ? 1 : -1;
 		public static bool RandomBool() => Random.value < 0.5f;
 		public static float RandomFloat01() => Random.value;
@@ -28,5 +30,16 @@ namespace StuartHeathTools
 			Random.Range(min, max), Random.Range(min, max));
 
 		public static T GetRandomFromList<T>(this IList<T> list) => list[Random.Range(0, list.Count)];
+        
+		//https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+        public static void Shuffle<T>(this IList<T> list)  
+        {  
+            var n = list.Count;  
+            while (n > 1) {  
+                n--;  
+                var k = rng.Next(n + 1);  
+                (list[k], list[n]) = (list[n], list[k]);
+            }  
+        }
 	}
 }
