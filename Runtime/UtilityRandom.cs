@@ -14,7 +14,7 @@ namespace StuartHeathTools
 	/// </summary>
 	public static class UtilityRandom
 	{
-		private static System.Random rng = new System.Random();  
+		private static System.Random prng = new System.Random();  
 
 		public static int RandomSign() => Random.value < 0.5f ? 1 : -1;
 		public static bool RandomBool() => Random.value < 0.5f;
@@ -37,9 +37,18 @@ namespace StuartHeathTools
             var n = list.Count;  
             while (n > 1) {  
                 n--;  
-                var k = rng.Next(n + 1);  
+                var k = prng.Next(n + 1);  
                 (list[k], list[n]) = (list[n], list[k]);
             }  
+        }
+        public static void ShuffleWithPRNG<T>(this IList<T> list, System.Random prng)  
+        {  
+	        var n = list.Count;  
+	        while (n > 1) {  
+		        n--;  
+		        var k = prng.Next(n + 1);  
+		        (list[k], list[n]) = (list[n], list[k]);
+	        }  
         }
 	}
 }
