@@ -3,12 +3,12 @@
 //
 #if UNITY_EDITOR
 
-using Editor.ScriptCreation;
+
 using StuartHeathToolsEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace StuartHeathToolsEditor
 {
 	/// <summary>
 	///DemoWindow full description
@@ -28,19 +28,22 @@ namespace Editor
 
 		private void OnGUI()
 		{
-			
+
 			var style = new GUIStyle(GUI.skin.label) {alignment = TextAnchor.MiddleCenter};
 			GUILayout.Label("New Scripts", style);
 			EditorGUILayout.Space();
 			ScriptGenerationButtons();
 			UtilityEditor.LineBreak();
-			
 
-			
-			
+
+
+
 			GUILayout.FlexibleSpace();
 			UpdateToolsPackage.GetPackageVersionNumber();
-			GUILayout.Label("Version "+(UpdateToolsPackage.currentVersionNumber==""? "...":UpdateToolsPackage.currentVersionNumber),style );
+			GUILayout.Label(
+				"Version " + (UpdateToolsPackage.currentVersionNumber == ""
+					? "..."
+					: UpdateToolsPackage.currentVersionNumber), style);
 			if (GUILayout.Button("Update Tools Package"))
 			{
 				UpdateToolsPackage.UpdatePackageFromGit();
@@ -60,6 +63,6 @@ namespace Editor
 			}
 		}
 	}
-	
 }
+
 #endif	

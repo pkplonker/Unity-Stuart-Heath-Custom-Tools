@@ -5,7 +5,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace StuartHeathToolsEditor
 {
 	/// <summary>
 	///LoggerEditor full description
@@ -29,4 +29,5 @@ namespace Editor
 		}
 	}
 }
+
 #endif

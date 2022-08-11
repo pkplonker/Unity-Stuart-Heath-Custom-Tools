@@ -5,8 +5,7 @@ using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
-
-namespace Editor
+namespace StuartHeathToolsEditor
 {
 	public class UpdateToolsPackage : UnityEditor.Editor
 	{
@@ -59,4 +58,5 @@ namespace Editor
 		}
 	}
 }
+
 #endif

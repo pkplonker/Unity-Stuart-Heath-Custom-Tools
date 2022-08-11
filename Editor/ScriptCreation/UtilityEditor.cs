@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ScriptCreation
+namespace StuartHeathToolsEditor
 {
 	/// <summary>
 	/// Utility class for custom editor scripts.

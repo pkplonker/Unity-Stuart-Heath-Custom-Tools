@@ -4,7 +4,6 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
-using Editor.ScriptCreation;
 using UnityEditor;
 using UnityEngine;
 

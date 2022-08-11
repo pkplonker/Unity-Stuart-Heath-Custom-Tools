@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 
-namespace Editor
+namespace StuartHeathToolsEditor
 {
 	/// <summary>
 	///SetupInitialStructure full description
@@ -33,6 +33,6 @@ namespace Editor
 			}
 		}
 	}
-
 }
+
 #endif	
