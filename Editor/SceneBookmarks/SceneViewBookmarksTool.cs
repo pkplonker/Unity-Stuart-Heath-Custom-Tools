@@ -16,6 +16,7 @@ namespace StuartHeathToolsEditor
 	{
 		private const string MENU_PATH = "Stuart/SceneCamera/";
 		private static int bookmarkIndex = 0;
+
 		[MenuItem(MENU_PATH + "Add")]
 		public static void AddMenuItem()
 		{
@@ -45,6 +46,7 @@ namespace StuartHeathToolsEditor
 
 		[InitializeOnLoadMethod]
 		private static void Initialize() => EditorSceneManager.sceneOpened += OnSceneOpened;
+
 		private static void OnSceneOpened(Scene scene, OpenSceneMode mode) => bookmarkIndex = 0;
 	}
 }
