@@ -13,7 +13,7 @@ namespace StuartHeathToolsEditor
 		private static ListRequest listRequest;
 		public static string currentVersionNumber { get; private set; } = "";
 
-		[MenuItem("Stuart/UpdateTools", false, 99995)]
+		[MenuItem("Stuart/Update Tools From Git", false, 99995)]
 		public static void UpdatePackageFromGit()
 		{
 			Debug.Log("Updating Stuart Heath Tools....");

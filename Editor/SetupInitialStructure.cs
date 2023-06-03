@@ -15,7 +15,7 @@ namespace StuartHeathToolsEditor
 
 	public class SetupInitialStructure
 	{
-		[MenuItem("Stuart/Setup InitialFolder Structure", false, 99999)]
+		[MenuItem("Stuart/Setup Initial Folder Structure", false, 99999)]
 		public static void SetupFolderStructure()
 		{
 			var folderList = new List<string> {"Prefabs", "Resources", "Scripts", "Editor", "Downloads", "Art"};
