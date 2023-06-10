@@ -34,10 +34,6 @@ namespace StuartHeathToolsEditor
 			EditorGUILayout.Space();
 			ScriptGenerationButtons();
 			UtilityEditor.LineBreak();
-
-
-
-
 			GUILayout.FlexibleSpace();
 			UpdateToolsPackage.GetPackageVersionNumber();
 			GUILayout.Label(

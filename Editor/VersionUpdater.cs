@@ -24,7 +24,11 @@ public class VersionUpdater
 
 		var directoryPath = "Assets/Unity-Stuart-Heath-Custom-Tools";
 		var fileName = "package.json";
-
+		if(!File.Exists(directoryPath + "/" + fileName)||!Directory.Exists(directoryPath))
+		{
+			Debug.LogError("File not found: " + fileName);
+			return;
+		}
 		var files = Directory.GetFiles(directoryPath, fileName, SearchOption.AllDirectories);
 
 		if (files.Length > 0)

@@ -44,5 +44,23 @@ namespace StuartHeathTools
 			return (value - valueRangeMin) / (valueRangeMax - valueRangeMin) * (newRangeMax - newRangeMin) +
 			       newRangeMin;
 		}
+
+		public static Color Clamp(this Color value, Color min, Color max)
+		{
+			var r =Mathf.Clamp(value.r, min.r, max.r);
+			var g =Mathf.Clamp(value.g, min.g, max.g);
+			var b =Mathf.Clamp(value.b, min.b, max.b);
+			return new Color(r,g,b);
+		}
+		public static Color Clamp(this Color value, float min, float max)=>Clamp(value, new Color(min, min, min), new Color(max, max, max));
+		public static Color ClampWithAlpha(this Color value, Color min, Color max)
+		{
+			var r =Mathf.Clamp(value.r, min.r, max.r);
+			var g =Mathf.Clamp(value.g, min.g, max.g);
+			var b =Mathf.Clamp(value.b, min.b, max.b);
+			var a =Mathf.Clamp(value.a, min.a, max.a);
+			return new Color(r,g,b,a);
+		}
+		public static Color ClampWithAlpha(this Color value, float min, float max)=>Clamp(value, new Color(min, min, min,min), new Color(max, max, max,max));
 	}
 }
