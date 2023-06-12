@@ -30,18 +30,12 @@ namespace StuartHeathToolsEditor
 			ToolbarCallback.OnToolbarGUIRight = GUIRight;
 			LeftToolbarGUI.Add(ToolBarLeft);
 			RightToolbarGUI.Add(ToolBarRight);
-			
 		}
-
-		
 		public static void AddToolbarButton(ToolBarButtonInfo info)=>toolBarButtonInfos.Add(info);
-		
 		private static List<ToolBarButtonInfo> toolBarButtonInfos = new ();
 		private static void ToolBarRight()
 		{
 			GUILayout.FlexibleSpace();
-
-			
 			foreach (var button in toolBarButtonInfos.Where(x=>!x.IsLeft))
 			{
 				buttonStyle = new GUIStyle(GUI.skin.button)

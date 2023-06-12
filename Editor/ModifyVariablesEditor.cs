@@ -2,11 +2,7 @@
 // Copyright (C) 2023 Stuart Heath. All rights reserved.
 //
 
-using System;
-using System.Reflection;
-using UnityEngine;
 using UnityEditor;
-using Object = UnityEngine.Object;
 
 /// <summary>
 ///ModifyVariablesEditor full description
@@ -18,7 +14,7 @@ public class ModifyVariablesEditor : EditorWindow
 	[MenuItem("Assets/Stuart/Modify Variables", false, 14)]
 	public static void ShowWindow()
 	{
-		Object selectedObject = Selection.activeObject;
+		var selectedObject = Selection.activeObject;
 		if (selectedObject != null && selectedObject is MonoScript monoScript)
 		{
 			selectedScript = monoScript;
@@ -37,8 +33,8 @@ public class ModifyVariablesEditor : EditorWindow
 
 		if (selectedScript != null)
 		{
-			SerializedObject serializedObject = new SerializedObject(selectedScript);
-			SerializedProperty property = serializedObject.GetIterator();
+			var serializedObject = new SerializedObject(selectedScript);
+			var property = serializedObject.GetIterator();
 
 			while (property.NextVisible(true))
 			{
