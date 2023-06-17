@@ -2,13 +2,15 @@
 // Copyright (C) 2023 Stuart Heath. All rights reserved.
 //
 
-using UnityEditor;
-using UnityEditor.SceneManagement;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace StuartHeathToolsEditor
 {
+#if UNITY_EDITOR
+
+	using UnityEditor;
+	using UnityEngine.SceneManagement;
+	using UnityEditor.SceneManagement;
+
 	/// <summary>
 	///SceneView full description
 	/// </summary>
@@ -49,4 +51,5 @@ namespace StuartHeathToolsEditor
 
 		private static void OnSceneOpened(Scene scene, OpenSceneMode mode) => bookmarkIndex = 0;
 	}
+#endif
 }

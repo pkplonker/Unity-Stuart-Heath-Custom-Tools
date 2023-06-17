@@ -11,6 +11,7 @@ using UnityEditor;
 /// </summary>
 public class SceneviewSnapshot
 {
+	#if UNITY_EDITOR
 	[MenuItem("Stuart/Capture Scene View")]
 	public static void CaptureSceneViewMenuItem()
 	{
@@ -27,4 +28,5 @@ public class SceneviewSnapshot
 		File.WriteAllBytes(Application.dataPath + "/" + fileName, bytes);
 		AssetDatabase.Refresh();
 	}
+	#endif
 }

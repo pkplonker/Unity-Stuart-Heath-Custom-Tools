@@ -9,6 +9,7 @@ namespace StuartHeathToolsEditor
 {
 	public static class ToolbarCallback
 	{
+		#if UNITY_EDITOR
 		static Type m_toolbarType = typeof(Editor).Assembly.GetType("UnityEditor.Toolbar");
 		static Type m_guiViewType = typeof(Editor).Assembly.GetType("UnityEditor.GUIView");
 		static Type m_iWindowBackendType = typeof(Editor).Assembly.GetType("UnityEditor.IWindowBackend");
@@ -71,5 +72,6 @@ namespace StuartHeathToolsEditor
 				toolbarZone.Add(parent);
 			}
 		}
+#endif
 	}
 }

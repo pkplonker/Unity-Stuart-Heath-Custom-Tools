@@ -5,7 +5,7 @@
 using System;
 using UnityEngine;
 using UnityEditor;
-
+#if UNITY_EDITOR
 /// <summary>
 ///SceneViewBookmark full description
 /// </summary>
@@ -37,3 +37,4 @@ public struct SceneViewBookmark
 		SceneView.lastActiveSceneView.orthographic = isOrtho;
 	}
 }
+#endif

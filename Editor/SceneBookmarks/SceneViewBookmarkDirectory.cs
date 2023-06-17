@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneViewBookmarkDirectory : ScriptableObject
 {
+	#if UNITY_EDITOR
 	[SerializeField] [HideInInspector] private string sceneGUID = null;
 
 	[SerializeField] [Tooltip("Bookmarks")]
@@ -70,4 +71,5 @@ public class SceneViewBookmarkDirectory : ScriptableObject
 		EditorUtility.SetDirty(this);
 		AssetDatabase.SaveAssetIfDirty(this);
 	}
+	#endif
 }

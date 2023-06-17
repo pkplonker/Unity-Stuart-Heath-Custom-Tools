@@ -3,7 +3,7 @@
 //
 
 using UnityEditor;
-
+#if UNITY_EDITOR
 /// <summary>
 ///ModifyVariablesEditor full description
 /// </summary>
@@ -62,3 +62,4 @@ public class ModifyVariablesEditor : EditorWindow
 		// }
 	}
 }
+#endif

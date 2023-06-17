@@ -9,6 +9,7 @@ using UnityEngine;
 //https://github.com/marijnz/unity-toolbar-extender
 namespace StuartHeathToolsEditor
 {
+	#if UNITY_EDITOR
 	[InitializeOnLoad]
 	public static class ToolbarExtender
 	{
@@ -215,4 +216,5 @@ namespace StuartHeathToolsEditor
 			IsLeft = isLeft;
 		}
 	}
+	#endif
 }

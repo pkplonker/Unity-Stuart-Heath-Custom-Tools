@@ -13,11 +13,11 @@ using UnityEngine;
 /// </summary>
 public class VersionUpdater
 {
+	#if UNITY_EDITOR
 	[MenuItem("Stuart/Update Tools Version Number", false, 99900)]
 	public static void UpdateToolsVersion()
 	{
 		if (!EditorUtility.DisplayDialog("Update Tools Version Number", "Do you want to update the tools version number?", "Yes", "No")) return;
-		Debug.Log("User clicked Yes");
 
 		var directoryPath = "Assets/Unity-Stuart-Heath-Custom-Tools";
 		var fileName = "package.json";
@@ -50,7 +50,17 @@ public class VersionUpdater
 		var version = int.Parse(resArray[2]);
 		version++;
 		data = data.Replace(res, resArray[0] + "." + resArray[1] + "." + version);
-		var updatedJson = JsonUtility.ToJson(data, true);
-		Debug.Log("Version number replaced. New JSON:\n" + updatedJson);
+		try
+		{
+			File.WriteAllText("assets/Unity-Stuart-Heath-Custom-Tools/package.json", data);
+			AssetDatabase.SaveAssets();
+			AssetDatabase.Refresh();
+		}
+		catch (Exception e)
+		{
+			Debug.Log($"Failed to save updated package json {e}");
+		}
+		Debug.Log("Version number replaced. New JSON:\n" + @data);
 	}
+	#endif
 }

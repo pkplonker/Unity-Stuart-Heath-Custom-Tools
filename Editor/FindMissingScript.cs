@@ -11,6 +11,7 @@ using UnityEngine;
 /// </summary>
 public class FindMissingScript
 {
+	#if UNITY_EDITOR
 	[MenuItem("Stuart/Missing Scripts/Find")]
 	public static void FindMissingScripts()
 	{
@@ -44,4 +45,5 @@ public class FindMissingScript
 			? $"Destroyed {count} components with missing scripts"
 			: "No components with missing scripts found");
 	}
+	#endif
 }
